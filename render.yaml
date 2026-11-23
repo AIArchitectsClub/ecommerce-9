@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: shopease
+    runtime: node
+    plan: free
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DATABASE_URL
+        sync: false   # paste your Neon connection string in the Render dashboard
